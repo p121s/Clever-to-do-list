@@ -1,0 +1,24 @@
+.button_back {
+    border: none;
+    background: none;
+    font-size: 25px;
+    font-weight: bold;
+    display: block;
+}
+
+.button_back::before {
+    content: '< ';
+}
+
+.button_add-edit {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 60px;
+    width: 80%;
+    height: 50px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
