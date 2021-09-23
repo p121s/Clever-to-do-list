@@ -1,0 +1,27 @@
+.container {
+    width: 90%;
+    margin: 50px auto;
+}
+
+#add_task {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 60px;
+    width: 80%;
+    height: 50px;
+    background-color: tomato;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.task_item {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.item_name {
+    font-size: 18px;
+    font-weight: 500;
+}
