@@ -13,14 +13,14 @@
         "sourceType": "module"
     },
     "rules": {
-        "no-var": "error",
-        "semi": "error",
-        "indent": "error",
-        "no-multi-spaces": "error",
-        "space-in-parens": "error",
-        "no-multiple-empty-lines": "error",
-        "prefer-const": "error",
-        "no-use-before-define": "error",
-        "react/prop-types": "ignore"
+        "no-var": "warn",
+        "semi": "warn",
+        "indent": "warn",
+        "no-multi-spaces": "warn",
+        "space-in-parens": "warn",
+        "no-multiple-empty-lines": "warn",
+        "prefer-const": "warn",
+        "no-use-before-define": "warn",
+        "react/prop-types": "warn"
     }
 }
