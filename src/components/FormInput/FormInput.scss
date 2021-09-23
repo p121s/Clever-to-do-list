@@ -1,0 +1,96 @@
+.block_input {
+    position: relative;
+}
+
+.label_with_radio {
+    position: absolute;
+    top: -13px;
+    left: 55px;
+    display: block;
+    padding: 15px 0;
+    color: rgb(54, 134, 134);
+    font-size: 12px;
+}
+
+.label_with_out_radio {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    display: block;
+    padding: 15px 0;
+    color: rgb(54, 134, 134);
+    font-size: 12px;
+}
+
+input {
+    display: block;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid #565656;
+}
+
+.input_with_out_label {
+    max-width: 100px;
+    padding: 9px;
+}
+
+.input_with_label {
+    padding: 20px 15px 5px;
+    margin: 20px 0;
+}
+
+input:hover {
+    border: 1px solid aqua;
+}
+
+input:focus {
+    border: 1px solid blue;
+}
+
+input[type='submit'],
+input[type='button'] {
+    width: 150px;
+    padding: 10px;
+    margin: 20px 0;
+}
+
+input[type='radio'] {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin: 0 35px;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type='checkbox'] {
+    display: none;
+}
+
+.checkbox-label + label {
+    position: relative;
+    transform: translateY(25%);
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    border: 3px solid orange;
+    margin-right: 10px;
+}
+
+.checkbox-label:checked + label {
+    border-color: tomato;
+    background: radial-gradient(circle at left 46% top 48%, tomato 40%, white 45%);
+}
+
+.checkbox-label:hover + label {
+    border: 3px solid red;
+}
+
+textarea {
+    width: 95%;
+    height: 200px;
+}
