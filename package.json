@@ -1,6 +1,7 @@
 {
     "name": "clever_to-do_list",
     "version": "0.1.0",
+    "homepage": "https://github.com/p121s/Innowise-Lab-Internship-Level-1-Clever-to-do-list.git",
     "private": true,
     "dependencies": {
         "@testing-library/jest-dom": "^5.11.4",
@@ -20,6 +21,8 @@
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build",
         "eslint": "eslint",
         "prettier": "prettier",
         "test": "react-scripts test",
@@ -44,6 +47,7 @@
         ]
     },
     "devDependencies": {
-        "eslint-plugin-react": "^7.26.0"
+        "eslint-plugin-react": "^7.26.0",
+        "gh-pages": "^3.2.3"
     }
 }
