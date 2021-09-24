@@ -1,6 +1,7 @@
 {
     "name": "clever_to-do_list",
     "version": "0.1.0",
+    "homepage": "http://p121s.github.io/InnowiseLbIntTodolist",
     "private": true,
     "dependencies": {
         "@testing-library/jest-dom": "^5.11.4",
