@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router';
+import FormInput from '../../FormInput/FormInput';
+import { collection, addDoc, doc, getDoc } from "firebase/firestore"; 
+import { database } from '../../fireBase/FireBasenItialization';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './CreatingEditingPage.scss';
 import '../ToDoList.scss';
-import FormInput from '../../FormInput/FormInput';
-import { collection, addDoc } from "firebase/firestore"; 
-import { database } from '../../fireBase/FireBasenItialization';
 
 export default function CreatingEditingPage(user) {
     const history = useHistory();
@@ -12,8 +14,26 @@ export default function CreatingEditingPage(user) {
     const [dateTask, setDateTask] = useState();
     const [nameTask, setNameTask] = useState();
     const [textTask, setTextTask] = useState();
+    const [thisTask, setThisTask] = useState();
+    const notify = (error) => toast.error(`${error}`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
 
-    console.log(history);
+    const notifySucc = (error) => toast.success(`${error}`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
 
     const handleDate = ({ target: { value } }) => {
         setDateTask(value);
@@ -32,24 +52,33 @@ export default function CreatingEditingPage(user) {
         history.goBack();
     };
 
+    useEffect(() => {
+        const docRef = doc(database, user.user + '/' + id);
+        getDoc(docRef)
+            .then(responce => responce.data())
+            .then(responce => setThisTask(responce));
+        console.log(thisTask);
+    }, []);
+
     function writeUserData() {
         try {
-            const docRef = addDoc(collection(database, user.user), {
+            addDoc(collection(database, user.user), {
                 dateTask: dateTask,
                 nameTask: nameTask,
-                textTask: textTask
+                textTask: textTask,
+                statusTask: false
             });
-            alert("Document written with ID: ", docRef.id);
+            notifySucc("Document written");
             history.push('/');
         } catch (e) {
-            console.error("Error adding document: ", e);
+            notify("Error adding document: ");
         }
     }
 
     return (
         <div className="task_page-container">
             <button className="button_back" type="button" onClick={back}>
-                Babk Tasker
+                Back Tasker
             </button>
             {id === 'add' ? (
                 <div className="container">
@@ -65,23 +94,17 @@ export default function CreatingEditingPage(user) {
             ) : (
                 <div className="container">
                     <div>
-                        <input className="checkbox-label" id={id} type="checkbox" />
+                        <input className="checkbox-label" id={id} type="checkbox" checked={thisTask ? thisTask.statusTask : false} />
                         <label htmlFor={id}></label>
-                        <span className="item-name">Name</span>
+                        <span className="item-name">{thisTask ? thisTask.nameTask : ''}</span>
                     </div>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae arcu
-                        sed est eleifend mollis. Nulla tristique vulputate tincidunt. Quisque id
-                        libero sit amet lectus mollis scelerisque. Interdum et malesuada fames ac
-                        ante ipsum primis in faucibus. Mauris auctor orci eu dui porta, eget
-                        ullamcorper nulla consectetur. Quisque dapibus tristique orci, eu pretium
-                        dolor aliquam ut. Class aptent taciti sociosqu ad litora torquent per
-                        conubia nostra, per inceptos himenaeos. Fusce in leo purus. Fusce a faucibus
-                        odio.
+                        {thisTask ? thisTask.textTask : ''}
                     </p>
                     <button className="button_add-edit">Edit</button>
                 </div>
             )}
+            <ToastContainer />
         </div>
     );
 }
