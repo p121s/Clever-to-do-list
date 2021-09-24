@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/p121s/InnowiseLbIntTodolist.git/static/css/main.73d57741.chunk.css",
-    "main.js": "/p121s/InnowiseLbIntTodolist.git/static/js/main.7195fd0b.chunk.js",
-    "main.js.map": "/p121s/InnowiseLbIntTodolist.git/static/js/main.7195fd0b.chunk.js.map",
+    "main.js": "/p121s/InnowiseLbIntTodolist.git/static/js/main.c263ed8e.chunk.js",
+    "main.js.map": "/p121s/InnowiseLbIntTodolist.git/static/js/main.c263ed8e.chunk.js.map",
     "runtime-main.js": "/p121s/InnowiseLbIntTodolist.git/static/js/runtime-main.a8343dbf.js",
     "runtime-main.js.map": "/p121s/InnowiseLbIntTodolist.git/static/js/runtime-main.a8343dbf.js.map",
     "static/js/2.39107b0c.chunk.js": "/p121s/InnowiseLbIntTodolist.git/static/js/2.39107b0c.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.a8343dbf.js",
     "static/js/2.39107b0c.chunk.js",
     "static/css/main.73d57741.chunk.css",
-    "static/js/main.7195fd0b.chunk.js"
+    "static/js/main.c263ed8e.chunk.js"
   ]
 }
