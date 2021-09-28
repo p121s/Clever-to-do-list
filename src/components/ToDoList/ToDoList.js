@@ -1,12 +1,13 @@
 /* eslint-disable react/prop-types */
-// import { useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './ToDoList.scss';
 
 export default function ToDoList({allTodayTasks}) {
 
-    // console.log(allTodayTasks);
-    // const [tasks, setTasks] = useState([]);
+    // eslint-disable-next-line no-unused-vars
+    const [tasks, setTasks] = useState(allTodayTasks);
+    console.log(tasks);
 
     // setTasks(allTodayTasks);
     
@@ -20,7 +21,7 @@ export default function ToDoList({allTodayTasks}) {
             {allTodayTasks.length === 0
                 ? 'You don`t have tasks today!'
                 : allTodayTasks.map(task => (
-                    <div key={`div_${task.nameTask}`}>
+                    <div className='task_li' key={`div_${task.nameTask}`}>
                         <input
                             key={`input_${task.nameTask}`}
                             className="checkbox-label"
