@@ -3,7 +3,7 @@ import { useHistory, useParams } from 'react-router';
 import FormInput from '../../FormInput/FormInput';
 import { collection, addDoc, doc, getDoc, setDoc, updateDoc, deleteDoc } from "firebase/firestore"; 
 import { database } from '../../fireBase/FireBasenItialization';
-import { ToastContainer, toast } from 'react-toastify';
+import { notifyError, notifySuccess } from '../../../App';
 import 'react-toastify/dist/ReactToastify.css';
 import './CreatingEditingPage.scss';
 import '../ToDoList.scss';
@@ -18,25 +18,6 @@ export default function CreatingEditingPage(user) {
     const [thisTask, setThisTask] = useState({});
     const [idTask, setIdTask] = useState(id);
     const [flagRequest, setFlagRequest] = useState(false);
-    const notify = (error) => toast.error(`${error}`, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-    });
-
-    const notifySucc = (succ) => toast.success(`${succ}`, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-    });
 
     const handleDate = ({ target: { value } }) => {
         setDateTask(value);
@@ -70,10 +51,10 @@ export default function CreatingEditingPage(user) {
                 textTask: textTask,
                 statusTask: false
             });
-            notifySucc("Document written");
+            notifySuccess("Document written");
             history.push('/');
         } catch (e) {
-            notify("Error adding document");
+            notifyError("Error adding document");
         }
     }
 
@@ -81,7 +62,7 @@ export default function CreatingEditingPage(user) {
         const cityRef = doc(database, user.user, idTask);
         updateDoc(cityRef, { statusTask: true });
         setFlagRequest(!flagRequest);
-        notifySucc('This task done');
+        notifySuccess('This task done');
     }
 
     function delDoc () {
@@ -98,11 +79,11 @@ export default function CreatingEditingPage(user) {
                 textTask: textTask,
                 statusTask: false
             });
-            notifySucc("Document written");
+            notifySuccess("Document written");
             setFlagRequest(!flagRequest);
             setIdPar(idTask);
         } catch (e) {
-            notify("Error adding document");
+            notifyError("Error adding document");
         }
         
     }
@@ -146,7 +127,6 @@ export default function CreatingEditingPage(user) {
                     </div>
                 ) : "Task deleted"
             )}
-            <ToastContainer />
         </div>
     );
 }

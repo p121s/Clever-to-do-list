@@ -3,7 +3,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { auth } from '../fireBase/FireBasenItialization';
 import { createUserWithEmailAndPassword } from '@firebase/auth';
 import FormInput from '../FormInput/FormInput';
-import { ToastContainer, toast } from 'react-toastify';
+import { notifyError } from '../../App';
 import 'react-toastify/dist/ReactToastify.css';
 import './LogInPage.scss';
 
@@ -12,15 +12,6 @@ export default function Redistration() {
     const [password, setPassword] = useState();
     const [repeatPassword, setRepeatPassword] = useState();
     const history = useHistory();
-    const notify = (error) => toast.error(`${error}`, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-    });
 
     const handleEmail = ({ target: { value } }) => {
         setEmail(value);
@@ -37,12 +28,17 @@ export default function Redistration() {
     const createAccount = () => {
         if(password === repeatPassword) {
             createUserWithEmailAndPassword(auth, email, password)
-                .then(responce => responce)
-                .catch(err => notify(err));
+                .then(responce => responce.user.uid)
+                .then(responce => {
+                    if(responce) {
+                        history.push('/');
+                    }
+                    return responce;
+                })                    
+                .catch(err => notifyError(err));
         } else {
-            notify("Passwords don't match");
+            notifyError("Passwords don't match");
         }
-        history.push('/');
     };
 
     return (
@@ -53,7 +49,6 @@ export default function Redistration() {
             <FormInput label="Repeat password" value={repeatPassword} type="password" handleChange={handleReapeatPassword} />
             <button className='login-reg' onClick={createAccount}>Register</button>
             <NavLink to="/">Log In</NavLink>
-            <ToastContainer />
         </div>
     );
 }

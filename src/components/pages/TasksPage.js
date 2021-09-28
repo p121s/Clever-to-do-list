@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Calendar from '../calendar/Calendar';
 import { auth, database } from '../fireBase/FireBasenItialization';
 import { signOut } from '@firebase/auth';
 import { collection, getDocs } from "firebase/firestore"; 
 import './TasksPage.scss';
-import { useEffect } from 'react/cjs/react.development';
 
 export default function TasksPage(user) {
 
