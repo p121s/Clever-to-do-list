@@ -3,12 +3,41 @@
     flex-basis: 80px;
     height: 100px;
     margin: 0 20px;
-    border: 2px solid lightskyblue;
-    border-radius: 5px;
+    border: 1px solid lightgray;
+    border-radius: 15px;
 }
 
-.day > div {
+.today {
+    flex: none;
+    flex-basis: 80px;
+    height: 100px;
+    margin: 0 20px;
+    border: 1px solid lightgray;
+    border-radius: 15px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+
+.day > div,
+.today > div {
     width: 100%;
+    margin: 5px 0 0 0;
     text-align: center;
     z-index: 5;
+}
+
+.month_yaer {
+    font-size: 12px;
+}
+
+.day_name {
+    font-size: 20px;
+    height: 20%;
+}
+
+.date {
+    font-size: 25px;
+    font-weight: bold;
+    height: 30%;
 }

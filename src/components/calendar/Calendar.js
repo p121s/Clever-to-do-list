@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import React, { useState } from "react";
 import Day from "./day/Day";
 import ToDoList from '../ToDoList/ToDoList';
 import './Calendar.scss';
@@ -7,19 +7,21 @@ import { useEffect } from "react/cjs/react.development";
 
 export default function Calendar ({allTasks}) {
 
-    const [tasksAtThisDay, setTasksAtThisDay] = useState([]);
-    // eslint-disable-next-line no-unused-vars
-    const [today, setToday] = useState(new Date());
+    const [tasksAtThisDay, setTasksAtThisDay] = useState(allTasks);
+    const [today] = useState(new Date());
     const [chooseDate, setChooseDate] = useState(new Date());
+
+    console.log(allTasks);
+    
     const daysInMonth = 32 - new Date(today.getFullYear(), today.getMonth(), 32).getDate();
-    const daysName = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    const daysName = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
     useEffect(() => {
         setTasksAtThisDay(allTasks.filter(task => {
             if(JSON.stringify(task[1].dateTask.split('-').map(item => +item)) === JSON.stringify([chooseDate.getFullYear(), chooseDate.getMonth(), chooseDate.getDate()])) {
                 return task;
             }
         }));
-        console.log(tasksAtThisDay);
     }, [chooseDate]);
     
     let day = today.getDate();
@@ -36,16 +38,18 @@ export default function Calendar ({allTasks}) {
         day++;
     }
 
-    const handleDate = ({target: {attributes: {value}}}) => {
-        setChooseDate(new Date(value.value));
-        console.log(chooseDate);
+    const handleDate = (e) => {
+        console.log(e.currentTarget.getAttribute('value'));
+        setChooseDate(new Date(e.currentTarget.getAttribute('value')));
     };
+
+    console.log(tasksAtThisDay);
 
     return(
         <>
             <div className='calendar'>
-                {days.map(day => (
-                    <Day key={`${day[0]}_${day[1]}_${day[2]}`} day={day[0]} date={day[1]} month={day[2]} year={day[3]} handleDate={handleDate} />
+                {days.map((day, i) => (
+                    <Day key={`${day[0]}_${day[1]}_${day[2]}`} className={i === 0 ? 'today' : 'day'} day={day[0]} date={day[1]} month={day[2]} year={day[3]} handleDate={handleDate} />
                 ))}
             </div>
             <ToDoList allTodayTasks={tasksAtThisDay} />
