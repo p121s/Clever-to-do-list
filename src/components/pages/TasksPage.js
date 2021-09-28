@@ -1,6 +1,4 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-undef */
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Calendar from '../calendar/Calendar';
 import { auth, database } from '../fireBase/FireBasenItialization';
 import { signOut } from '@firebase/auth';
@@ -11,7 +9,6 @@ import { useEffect } from 'react/cjs/react.development';
 export default function TasksPage(user) {
 
     const [dataOutDatabadse, setDataOutDatabase] = useState([]);
-    console.log(dataOutDatabadse);
 
     const logOut = auth => {
         signOut(auth);
@@ -21,9 +18,9 @@ export default function TasksPage(user) {
         const alovelaceDocumentRef = collection(database, user.user);
         getDocs(alovelaceDocumentRef)
             .then(responce => {
-                const x = [];
-                responce.forEach(doc => x.push([doc.id, doc.data()]));
-                return x;
+                const tempArr = [];
+                responce.forEach(doc => tempArr.push([doc.id, doc.data()]));
+                return tempArr;
             })
             .then(responce => setDataOutDatabase(responce));
     }, []);
@@ -31,7 +28,7 @@ export default function TasksPage(user) {
 
     return (
         <div className="task_page-container">
-            <h1>Tasker</h1>
+            <h1>Tassker</h1>
             <button className='button_sign-out'
                 onClick={() => {
                     logOut(auth);

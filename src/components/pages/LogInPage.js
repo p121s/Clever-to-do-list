@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import FormInput from '../FormInput/FormInput';
 import { auth } from '../fireBase/FireBasenItialization';
@@ -46,8 +46,8 @@ export default function LogIn() {
     return (
         <div className="login_container">
             <h2>Log In</h2>
-            <FormInput label="Your Email" type="email" handleChange={handleEmail} />
-            <FormInput label="Password" type="password" handleChange={handlePassword} />
+            <FormInput label="Your Email" value={email} type="email" handleChange={handleEmail} />
+            <FormInput label="Password" value={password} type="password" handleChange={handlePassword} />
             <button className='login-reg'
                 onClick={() => {
                     logIn(auth, email, password);
