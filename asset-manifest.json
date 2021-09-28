@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.2c632f7b.chunk.css",
-    "main.js": "/static/js/main.46408469.chunk.js",
-    "main.js.map": "/static/js/main.46408469.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.a9301955.js",
-    "runtime-main.js.map": "/static/js/runtime-main.a9301955.js.map",
-    "static/css/2.0975cee1.chunk.css": "/static/css/2.0975cee1.chunk.css",
-    "static/js/2.ba27afdc.chunk.js": "/static/js/2.ba27afdc.chunk.js",
-    "static/js/2.ba27afdc.chunk.js.map": "/static/js/2.ba27afdc.chunk.js.map",
-    "static/js/3.d0f23f49.chunk.js": "/static/js/3.d0f23f49.chunk.js",
-    "static/js/3.d0f23f49.chunk.js.map": "/static/js/3.d0f23f49.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/2.0975cee1.chunk.css.map": "/static/css/2.0975cee1.chunk.css.map",
-    "static/css/main.2c632f7b.chunk.css.map": "/static/css/main.2c632f7b.chunk.css.map",
-    "static/js/2.ba27afdc.chunk.js.LICENSE.txt": "/static/js/2.ba27afdc.chunk.js.LICENSE.txt"
+    "main.css": "/InnowiseLbIntTodolist/static/css/main.2c632f7b.chunk.css",
+    "main.js": "/InnowiseLbIntTodolist/static/js/main.46408469.chunk.js",
+    "main.js.map": "/InnowiseLbIntTodolist/static/js/main.46408469.chunk.js.map",
+    "runtime-main.js": "/InnowiseLbIntTodolist/static/js/runtime-main.acd43996.js",
+    "runtime-main.js.map": "/InnowiseLbIntTodolist/static/js/runtime-main.acd43996.js.map",
+    "static/css/2.0975cee1.chunk.css": "/InnowiseLbIntTodolist/static/css/2.0975cee1.chunk.css",
+    "static/js/2.ad0179ee.chunk.js": "/InnowiseLbIntTodolist/static/js/2.ad0179ee.chunk.js",
+    "static/js/2.ad0179ee.chunk.js.map": "/InnowiseLbIntTodolist/static/js/2.ad0179ee.chunk.js.map",
+    "static/js/3.d0f23f49.chunk.js": "/InnowiseLbIntTodolist/static/js/3.d0f23f49.chunk.js",
+    "static/js/3.d0f23f49.chunk.js.map": "/InnowiseLbIntTodolist/static/js/3.d0f23f49.chunk.js.map",
+    "index.html": "/InnowiseLbIntTodolist/index.html",
+    "static/css/2.0975cee1.chunk.css.map": "/InnowiseLbIntTodolist/static/css/2.0975cee1.chunk.css.map",
+    "static/css/main.2c632f7b.chunk.css.map": "/InnowiseLbIntTodolist/static/css/main.2c632f7b.chunk.css.map",
+    "static/js/2.ad0179ee.chunk.js.LICENSE.txt": "/InnowiseLbIntTodolist/static/js/2.ad0179ee.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.a9301955.js",
+    "static/js/runtime-main.acd43996.js",
     "static/css/2.0975cee1.chunk.css",
-    "static/js/2.ba27afdc.chunk.js",
+    "static/js/2.ad0179ee.chunk.js",
     "static/css/main.2c632f7b.chunk.css",
     "static/js/main.46408469.chunk.js"
   ]
