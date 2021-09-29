@@ -7,10 +7,11 @@ import './Calendar.scss';
 
 export default function Calendar ({allTasks}) {
 
-    const [tasksAtThisDay, setTasksAtThisDay] = useState(allTasks);
+    const [tasksAtThisDay, setTasksAtThisDay] = useState([]);
     const [today] = useState(new Date());
-    const [chooseDate, setChooseDate] = useState(new Date());
+    const [chooseDate, setChooseDate] = useState();
     const [daysInMonth] = useState(32 - new Date(today.getFullYear(), today.getMonth(), 32).getDate());
+    const [counterTask, setCounterTask] = useState(0);
     let day = today.getDate();
     let month = today.getMonth();
     let year = today.getFullYear();
@@ -36,6 +37,14 @@ export default function Calendar ({allTasks}) {
         }
     }
 
+    useEffect(() => {
+        setTasksAtThisDay(allTasks.filter(task => {
+            if(JSON.stringify(task[1].dateTask.split('-').map(item => +item)) === JSON.stringify([today.getFullYear(), today.getMonth() + 1, today.getDate()])) {
+                return task;
+            }
+        }));
+    }, [allTasks]);
+
     generateArrDays();
 
     useEffect(() => {
@@ -45,6 +54,10 @@ export default function Calendar ({allTasks}) {
             }
         }));
     }, [chooseDate]);
+
+    useEffect(() => {
+        setCounterTask(tasksAtThisDay.length);
+    }, [tasksAtThisDay]);
     
     const handleDate = (e) => {
         setChooseDate(new Date(e.currentTarget.getAttribute('value')));
@@ -57,7 +70,7 @@ export default function Calendar ({allTasks}) {
                     <Day key={`${day[0]}_${day[1]}_${day[2]}`} className={i === 0 ? 'today' : 'day'} day={day[0]} date={day[1]} month={day[2]} year={day[3]} doesntDoneTasks={day[4]} doneTasks={day[5]} handleDate={handleDate} />
                 )) : ''}
             </div>
-            <ToDoList allTodayTasks={tasksAtThisDay} />
+            <ToDoList allTodayTasks={tasksAtThisDay} counterTask={counterTask} />
         </>
     );
 }

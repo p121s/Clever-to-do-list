@@ -8,7 +8,7 @@ import './TasksPage.scss';
 export default function TasksPage(user) {
 
     const [dataOutDatabadse, setDataOutDatabase] = useState([]);
-
+    
     const logOut = auth => {
         signOut(auth);
     };

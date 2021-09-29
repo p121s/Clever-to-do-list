@@ -3,16 +3,14 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './ToDoList.scss';
 
-export default function ToDoList({allTodayTasks}) {
-
-    const [tasks, setTasks] = useState(allTodayTasks);
+export default function ToDoList({allTodayTasks, counterTask}) {
     
     const history = useHistory();
 
     return (
         <div className="container">
             <div>
-                <h2>Today Tasks</h2>
+                <h2>{counterTask} Today Tasks</h2>
             </div>
             <div className='container_tasks'>
                 {allTodayTasks.length === 0
@@ -20,7 +18,13 @@ export default function ToDoList({allTodayTasks}) {
                     : allTodayTasks.map(task =>
                     {
                         return (
-                            <div className='task_li' key={`div_${task[1].nameTask}`}>
+                            <div 
+                                className='task_li' 
+                                key={`div_${task[1].nameTask}`}
+                                onClick={() => {
+                                    history.push(`/item_task${task[0]}`);
+                                }}
+                            >
                                 <input
                                     key={`input_${task.nameTask}`}
                                     className="checkbox-label"
@@ -36,9 +40,6 @@ export default function ToDoList({allTodayTasks}) {
                                 <span
                                     key={`span_${task.nameTask}`}
                                     className="item_name"
-                                    onClick={() => {
-                                        history.push(`/item_task${task[0]}`);
-                                    }}
                                 >
                                     {task[1].nameTask}
                                 </span>
