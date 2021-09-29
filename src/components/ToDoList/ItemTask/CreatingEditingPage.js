@@ -95,7 +95,7 @@ export default function CreatingEditingPage(user) {
             </button>
             {idPar === 'add' || idPar === 'adit' ? (
                 <div className="container">
-                    <div>
+                    <div className='form_new-task'>
                         <FormInput label="Date" value={dateTask} type="date" handleChange={handleDate} />
                         <FormInput label="Name Task" value={nameTask} type="text" handleChange={handleNameTask} />
                         <textarea value={textTask} onChange={handleTextTask}></textarea>

@@ -36,3 +36,10 @@
     overflow: auto;
     max-height: 300px;
 }
+
+.form_new-task {
+    position: relative;
+    width: 330px;
+    left: 50%;
+    transform: translateX(-50%);
+}
