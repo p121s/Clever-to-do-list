@@ -60,9 +60,9 @@ export default function CreatingEditingPage(user) {
 
     function done () {
         const cityRef = doc(database, user.user, idTask);
-        updateDoc(cityRef, { statusTask: true });
+        updateDoc(cityRef, { statusTask: !thisTask.statusTask });
         setFlagRequest(!flagRequest);
-        notifySuccess('This task done');
+        !thisTask.statusTask ? notifySuccess('This task done') : notifySuccess('This task doesn`t done');
     }
 
     function delDoc () {
@@ -116,7 +116,7 @@ export default function CreatingEditingPage(user) {
                         <p>
                             {thisTask ? thisTask.textTask : ''}
                         </p>
-                        <button className='button_done' onClick={done}>&#10004;</button>
+                        <button className='button_done' onClick={done}>{thisTask.statusTask ? (<span>&#10006;</span>) : (<span>&#10004;</span>)}</button>
                         <button className="button_edit" onClick={() => {
                             setDateTask(thisTask.dateTask);
                             setNameTask(thisTask.nameTask);

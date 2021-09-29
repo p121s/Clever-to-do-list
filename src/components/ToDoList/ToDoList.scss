@@ -31,3 +31,8 @@
     padding: 10px;
     border-bottom: 1px solid lightgray;
 }
+
+.container_tasks {
+    overflow: auto;
+    max-height: 300px;
+}

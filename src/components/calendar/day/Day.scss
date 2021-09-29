@@ -41,3 +41,29 @@
     font-weight: bold;
     height: 30%;
 }
+
+.day > .done_tasks,
+.day > .doesnt_done_tasks,
+.today > .done_tasks,
+.today > .doesnt_done_tasks {
+    height: 2px;
+    position: relative;
+    display: inline-block;
+    border-width: 2px;
+    border-style: solid;
+    width: 2px;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+.doesnt_done_tasks {
+    left: 25px;
+    border-color: orange;
+    background-color: orange;
+}
+
+.done_tasks {
+    right: -25px;
+    border-color: tomato;
+    background-color: tomato;
+}

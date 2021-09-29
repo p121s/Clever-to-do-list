@@ -1,4 +1,5 @@
 {
+  "homepage": "https://p121s.github.io/InnowiseLbIntTodolist",
   "name": "clever_to-do_list",
   "version": "0.1.0",
   "private": true,
@@ -19,10 +20,10 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "eslint": "eslint",
     "prettier": "prettier",
     "test": "react-scripts test",
