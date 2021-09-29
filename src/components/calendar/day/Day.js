@@ -3,7 +3,6 @@ import React from 'react';
 import './Day.scss';
 
 export default function Day({ day, date, month, year, handleDate, className, doesntDoneTasks, doneTasks }) {
-    console.log(doesntDoneTasks, doneTasks);
     return (
         <>
             <div className={className} value={new Date(year, month, date)} onClick={handleDate}>
