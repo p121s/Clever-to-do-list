@@ -85,13 +85,12 @@ export default function CreatingEditingPage(user) {
         } catch (e) {
             notifyError("Error adding document");
         }
-        
     }
 
     return (
         <div className="task_page-container">
             <button className="button_back" type="button" onClick={back}>
-                Back Tasker
+                &#8617; Back Tassker
             </button>
             {idPar === 'add' || idPar === 'adit' ? (
                 <div className="container">
@@ -116,7 +115,7 @@ export default function CreatingEditingPage(user) {
                         <p>
                             {thisTask ? thisTask.textTask : ''}
                         </p>
-                        <button className='button_done' onClick={done}>{thisTask.statusTask ? (<span>&#10006;</span>) : (<span>&#10004;</span>)}</button>
+                        <button className='button_done' onClick={done}>{thisTask.statusTask ? (<span>&#10008;</span>) : (<span>&#10004;</span>)}</button>
                         <button className="button_edit" onClick={() => {
                             setDateTask(thisTask.dateTask);
                             setNameTask(thisTask.nameTask);
