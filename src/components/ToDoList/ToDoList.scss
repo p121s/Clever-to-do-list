@@ -16,6 +16,12 @@
     border-radius: 5px;
 }
 
+#add_task:hover {
+    cursor: pointer;
+    box-shadow: 5px 5px 5px lightgray;
+    transform: translate(-50%, -5px) scale(1.02);
+}
+
 .task_item {
     font-size: 18px;
     font-weight: 500;

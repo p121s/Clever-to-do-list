@@ -11,9 +11,30 @@
     font-size: 18px;
 }
 
-.button_edit {
+.button_add,
+.button_edit,
+.button_done,
+.button_delete {
     display: inline-block;
     position: absolute;
+    border-radius: 5px;
+}
+
+.button_add:hover {
+    cursor: pointer;
+    box-shadow: 5px 5px 5px lightgray;
+    transform: translate(-50%, -5px) scale(1.02);
+}
+
+.button_edit:hover,
+.button_done:hover,
+.button_delete:hover {
+    cursor: pointer;
+    box-shadow: 5px 5px 5px lightgray;
+    transform: scale(1.02);
+}
+
+.button_edit {
     right: 50px;
     bottom: 60px;
     width: 50%;
@@ -21,12 +42,9 @@
     background-color: green;
     color: white;
     border: none;
-    border-radius: 5px;
 }
 
 .button_add {
-    display: inline-block;
-    position: absolute;
     left: 50%;
     transform: translateX(-50%);
     bottom: 60px;
@@ -35,31 +53,24 @@
     background-color: green;
     color: white;
     border: none;
-    border-radius: 5px;
 }
 
 .button_done {
-    display: inline-block;
-    position: absolute;
     left: 70px;
     background: none;
     bottom: 60px;
     width: 50px;
     height: 50px;
     border: none;
-    border-radius: 5px;
     font-size: 35px;
 }
 
 .button_delete {
-    display: inline-block;
-    position: absolute;
     left: 150px;
     background: none;
     bottom: 60px;
     width: 50px;
     height: 50px;
     border: none;
-    border-radius: 5px;
     font-size: 35px;
 }
