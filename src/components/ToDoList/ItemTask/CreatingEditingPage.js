@@ -16,7 +16,7 @@ export default function CreatingEditingPage(user) {
     const [nameTask, setNameTask] = useState();
     const [textTask, setTextTask] = useState();
     const [thisTask, setThisTask] = useState({});
-    const [idTask, setIdTask] = useState(id);
+    const [idTask] = useState(id);
     const [flagRequest, setFlagRequest] = useState(false);
 
     const handleDate = ({ target: { value } }) => {

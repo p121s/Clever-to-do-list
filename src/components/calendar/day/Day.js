@@ -6,7 +6,7 @@ export default function Day({ day, date, month, year, handleDate, className, doe
     return (
         <>
             <div className={className} value={new Date(year, month, date)} onClick={handleDate}>
-                <div className='month_yaer'>{month}/{year}</div>
+                <div className='month_yaer'>{month + 1}/{year}</div>
                 <div className='day_name'>{day}</div>
                 <div className='date'>{date}</div>
                 <div className='doesnt_done_tasks' style={{display: doesntDoneTasks ? 'inline-block' : 'none'}}></div>

@@ -7,11 +7,7 @@ import './Calendar.scss';
 
 export default function Calendar ({allTasks}) {
 
-    const [tasksAtThisDay, setTasksAtThisDay] = useState([]);
-    const [today] = useState(new Date());
-    const [chooseDate, setChooseDate] = useState();
-    const [daysInMonth] = useState(32 - new Date(today.getFullYear(), today.getMonth(), 32).getDate());
-    const [counterTask, setCounterTask] = useState(0);
+    const today = new Date();
     let day = today.getDate();
     let month = today.getMonth();
     let year = today.getFullYear();
@@ -19,18 +15,28 @@ export default function Calendar ({allTasks}) {
     let doesntDoneTasks = false;
     let doneTasks = false;
 
+    const [tasksAtThisDay, setTasksAtThisDay] = useState([]);
+    const [chooseDate, setChooseDate] = useState();
+    const [daysInMonth] = useState(32 - new Date(today.getFullYear(), today.getMonth(), 32).getDate());
+    const [tasksAtThisDayLenght, settasksAtThisDayLenght] = useState(0);
+
+
     function generateArrDays () {
         for (let i = 0; i <= 30; i++) {
-            day === daysInMonth + 1 ? day = 1 : day;
-            day === 1 ? month += 1 : month;
-            month === 12 ? month = 0 : month;
-            month === 0 ? year += 1 : year;
+            if(day === daysInMonth + 1) {
+                day = 1;
+                month += 1;
+            }
+            if(month === 12) {
+                month = 0;
+                year += 1;
+            }
             allTasks.forEach(task => {
                 if(JSON.stringify(task[1].dateTask.split('-').map(item => +item)) === JSON.stringify([year, month + 1, day])) {
                     task[1].statusTask ? doneTasks = true : doesntDoneTasks = true;
                 }
             });
-            days[i] = [daysName[new Date(year, month, day).getDay()], day, month + 1, year, doesntDoneTasks, doneTasks];
+            days[i] = [daysName[new Date(year, month, day).getDay()], day, month, year, doesntDoneTasks, doneTasks];
             doesntDoneTasks = false;
             doneTasks = false;
             day++;
@@ -49,14 +55,14 @@ export default function Calendar ({allTasks}) {
 
     useEffect(() => {
         setTasksAtThisDay(allTasks.filter(task => {
-            if(JSON.stringify(task[1].dateTask.split('-').map(item => +item)) === JSON.stringify([chooseDate.getFullYear(), chooseDate.getMonth(), chooseDate.getDate()])) {
+            if(JSON.stringify(task[1].dateTask.split('-').map(item => +item)) === JSON.stringify([chooseDate.getFullYear(), chooseDate.getMonth() + 1, chooseDate.getDate()])) {
                 return task;
             }
         }));
     }, [chooseDate]);
 
     useEffect(() => {
-        setCounterTask(tasksAtThisDay.length);
+        settasksAtThisDayLenght(tasksAtThisDay.length);
     }, [tasksAtThisDay]);
     
     const handleDate = (e) => {
@@ -70,7 +76,7 @@ export default function Calendar ({allTasks}) {
                     <Day key={`${day[0]}_${day[1]}_${day[2]}`} className={i === 0 ? 'today' : 'day'} day={day[0]} date={day[1]} month={day[2]} year={day[3]} doesntDoneTasks={day[4]} doneTasks={day[5]} handleDate={handleDate} />
                 )) : ''}
             </div>
-            <ToDoList allTodayTasks={tasksAtThisDay} counterTask={counterTask} />
+            <ToDoList allTodayTasks={tasksAtThisDay} counterTask={tasksAtThisDayLenght} />
         </>
     );
 }
