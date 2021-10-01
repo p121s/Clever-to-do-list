@@ -69,6 +69,7 @@ export default function CreatingEditingPage(user) {
         const cityRef = doc(database, user.user, idTask);
         deleteDoc(cityRef);
         setFlagRequest(!flagRequest);
+        notifySuccess("Task deleted!");
     }
 
     function changeTask() {
@@ -124,7 +125,7 @@ export default function CreatingEditingPage(user) {
                         }}>Edit</button>
                         <button className='button_delete' onClick={delDoc}>&#128465;</button>
                     </div>
-                ) : "Task deleted"
+                ) : ""
             )}
         </div>
     );
