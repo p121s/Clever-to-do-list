@@ -33,9 +33,12 @@
 }
 
 .task_li {
-    margin: 1px 0;
     padding: 10px;
     border-bottom: 1px solid lightgray;
+}
+
+.task_li:hover {
+    background-color: lightblue;
 }
 
 .container_tasks {

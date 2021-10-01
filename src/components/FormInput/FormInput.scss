@@ -79,15 +79,12 @@ input[type='checkbox'] {
     border-radius: 20px;
     border: 3px solid orange;
     margin-right: 10px;
+    background-color: white;
 }
 
 .checkbox-label:checked + label {
     border-color: tomato;
     background: radial-gradient(circle at left 46% top 48%, tomato 40%, white 45%);
-}
-
-.checkbox-label:hover + label {
-    border: 3px solid red;
 }
 
 textarea {
