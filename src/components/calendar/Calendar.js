@@ -64,9 +64,16 @@ export default function Calendar ({allTasks}) {
     useEffect(() => {
         settasksAtThisDayLenght(tasksAtThisDay.length);
     }, [tasksAtThisDay]);
+
+    function changeClassChooseDay (elem) {
+        const daysCollection = document.getElementsByClassName("day");
+        [...daysCollection].forEach(elem => elem.classList.remove("chooseDay"));
+        elem.classList.add("chooseDay");
+    }
     
     const handleDate = (e) => {
         setChooseDate(new Date(e.currentTarget.getAttribute('value')));
+        changeClassChooseDay(e.currentTarget);
     };
 
     return(

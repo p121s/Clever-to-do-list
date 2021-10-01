@@ -19,6 +19,12 @@
     font-weight: bold;
 }
 
+.chooseDay {
+    flex-basis: 76px;
+    height: 96px;
+    border: 3px solid rgb(137, 209, 233);
+}
+
 .day:hover,
 .today:hover { 
     background-color: rgba(255, 99, 71, 0.4);
