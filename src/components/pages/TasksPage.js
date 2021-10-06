@@ -16,12 +16,10 @@ export default function TasksPage(user) {
     useEffect(() => {
         const alovelaceDocumentRef = collection(database, user.user);
         getDocs(alovelaceDocumentRef)
-            .then(responce => {
-                const tempArr = [];
-                responce.forEach(doc => tempArr.push([doc.id, doc.data()]));
-                return tempArr;
-            })
-            .then(responce => setDataOutDatabase(responce));
+            .then(({docs}) => docs.map(doc => ({
+                ...doc.data(),
+                idTask: doc.id })))
+            .then(res => setDataOutDatabase(res));
     }, []);
     
 

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
+import ItemTask from './ItemTask/ItemTask';
 import './ToDoList.scss';
 
 export default function ToDoList({allTodayTasks, counterTask}) {
@@ -18,32 +19,7 @@ export default function ToDoList({allTodayTasks, counterTask}) {
                     : allTodayTasks.map(task =>
                     {
                         return (
-                            <div 
-                                className='task_li' 
-                                key={`div_${task[1].nameTask}`}
-                                onClick={() => {
-                                    history.push(`/item_task${task[0]}`);
-                                }}
-                            >
-                                <input
-                                    key={`input_${task.nameTask}`}
-                                    className="checkbox-label"
-                                    type="checkbox"
-                                    id={`check_${task[1].nameTask}`}
-                                    checked={task[1].statusTask}
-                                    readOnly
-                                />
-                                <label
-                                    key={`label_${task.nameTask}`}
-                                    htmlFor={`check_${task[1].nameTask}`}
-                                ></label>
-                                <span
-                                    key={`span_${task.nameTask}`}
-                                    className="item_name"
-                                >
-                                    {task[1].nameTask}
-                                </span>
-                            </div>
+                            <ItemTask key={`item_${task.nameTask}`} task={task} />
                         );
                     }
                     )

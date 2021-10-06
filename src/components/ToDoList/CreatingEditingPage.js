@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router';
-import FormInput from '../../FormInput/FormInput';
+import FormInput from '../FormInput/FormInput';
 import { collection, addDoc, doc, getDoc, setDoc, updateDoc, deleteDoc } from "firebase/firestore"; 
-import { database } from '../../fireBase/FireBasenItialization';
-import { notifyError, notifySuccess } from '../../../App';
+import { database } from '../fireBase/FireBasenItialization';
+import { notifyError, notifySuccess } from '../../App';
 import 'react-toastify/dist/ReactToastify.css';
 import './CreatingEditingPage.scss';
-import '../ToDoList.scss';
+import './ToDoList.scss';
 
 export default function CreatingEditingPage(user) {
     const history = useHistory();
