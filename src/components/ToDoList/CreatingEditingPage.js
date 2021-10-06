@@ -83,6 +83,10 @@ export default function CreatingEditingPage(user) {
             notifySuccess("Document written");
             setFlagRequest(!flagRequest);
             setIdPar(idTask);
+            const docRef = doc(database, user.user + '/' + idTask);
+            getDoc(docRef)
+                .then(responce => responce.data())
+                .then(responce => setThisTask(responce));
         } catch (e) {
             notifyError("Error adding document");
         }

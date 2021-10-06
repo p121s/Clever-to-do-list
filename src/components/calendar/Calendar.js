@@ -121,7 +121,14 @@ export default function Calendar ({allTasks}) {
         <>
             <div className='calendar' onScroll={handleScroll}>
                 {days.length !== 0 ? days.map((day, i) => (
-                    <Day key={`${day.day}_${day.month}_${day.year}`} className={i === 0 ? 'today' : 'day'} day={day.dayName} date={day.day} month={day.month} year={day.year} doesntDoneTasks={day.doesntDoneTasks} doneTasks={day.doneTasks} handleDate={handleDate} />
+                    <Day 
+                        key={`${day.day}_${day.month}_${day.year}`} 
+                        className={i === 0 ? 'today' : 'day'} 
+                        day={day.dayName} date={day.day} 
+                        month={day.month} year={day.year} 
+                        doesntDoneTasks={day.doesntDoneTasks} 
+                        doneTasks={day.doneTasks} 
+                        handleDate={handleDate} />
                 )) : ''}
             </div>
             <ToDoList allTodayTasks={tasksAtThisDay} counterTask={tasksAtThisDayLenght} />
