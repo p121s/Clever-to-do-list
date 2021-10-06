@@ -112,7 +112,7 @@ export default function Calendar ({allTasks}) {
     };
 
     const handleScroll = (e) => {
-        if(e.target.scrollLeft + 700 > e.target.scrollWidth) {
+        if(Math.ceil(e.target.scrollLeft + e.target.clientWidth) === e.target.scrollWidth) {
             setCountDays(countDays + 30);
         }
     };
