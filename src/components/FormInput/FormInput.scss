@@ -84,7 +84,7 @@ input[type='checkbox'] {
 
 .checkbox-label:checked + label {
     border-color: tomato;
-    background: radial-gradient(circle at left 46% top 48%, tomato 40%, white 45%);
+    background: radial-gradient(circle at left 10px top 10px, tomato 40%, white 45%);
 }
 
 textarea {
