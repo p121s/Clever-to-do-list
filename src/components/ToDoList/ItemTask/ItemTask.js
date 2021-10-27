@@ -6,31 +6,33 @@ export default function ItemTask ({task}) {
 
     const history = useHistory();
 
+    const {nameTask, idTask, statusTask} = task;
+
     return (
         <div 
             className='task_li' 
-            key={`div_${task.nameTask}`}
+            key={`div_${idTask}`}
             onClick={() => {
-                history.push(`/item_task${task.idTask}`);
+                history.push(`/item_task${idTask}`);
             }}
         >
             <input
-                key={`input_${task.nameTask}`}
+                key={`input_${idTask}`}
                 className="checkbox-label"
                 type="checkbox"
-                id={`check_${task.nameTask}`}
-                checked={task.statusTask}
+                id={`check_${nameTask}`}
+                checked={statusTask}
                 readOnly
             />
             <label
-                key={`label_${task.nameTask}`}
-                htmlFor={`check_${task.nameTask}`}
+                key={`label_${idTask}`}
+                htmlFor={`check_${nameTask}`}
             ></label>
             <span
-                key={`span_${task.nameTask}`}
+                key={`span_${nameTask}`}
                 className="item_name"
             >
-                {task.nameTask}
+                {nameTask}
             </span>
         </div>);
 }
