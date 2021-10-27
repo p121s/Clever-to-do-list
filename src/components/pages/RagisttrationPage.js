@@ -3,7 +3,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { auth } from '../fireBase/FireBasenItialization';
 import { createUserWithEmailAndPassword } from '@firebase/auth';
 import FormInput from '../FormInput/FormInput';
-import { notifyError } from '../../App';
+import { notifyError } from '../modalMessages/modalMessages';
 import 'react-toastify/dist/ReactToastify.css';
 import './LogInPage.scss';
 
