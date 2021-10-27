@@ -3,7 +3,7 @@ import { useHistory, useParams } from 'react-router';
 import FormInput from '../FormInput/FormInput';
 import { collection, addDoc, doc, getDoc, setDoc, updateDoc, deleteDoc } from "firebase/firestore"; 
 import { database } from '../fireBase/FireBasenItialization';
-import { notifyError, notifySuccess } from '../../App';
+import { notifyError, notifySuccess } from '../modalMessages/modalMessages';
 import 'react-toastify/dist/ReactToastify.css';
 import './CreatingEditingPage.scss';
 import './ToDoList.scss';
@@ -16,7 +16,7 @@ export default function CreatingEditingPage(user) {
     const [nameTask, setNameTask] = useState();
     const [textTask, setTextTask] = useState();
     const [thisTask, setThisTask] = useState({});
-    const [idTask] = useState(id);
+    const [idTask] = useState(id !== 'add' ? id : 'null');
     const [flagRequest, setFlagRequest] = useState(false);
 
     const handleDate = ({ target: { value } }) => {
@@ -36,6 +36,13 @@ export default function CreatingEditingPage(user) {
         history.goBack();
     };
 
+    const changeDataTask = () => {
+        setDateTask(thisTask.dateTask);
+        setNameTask(thisTask.nameTask);
+        setTextTask(thisTask.textTask);
+        setIdPar('edit');
+    };
+
     useEffect(() => {
         const docRef = doc(database, user.user + '/' + idTask);
         getDoc(docRef)
@@ -46,7 +53,7 @@ export default function CreatingEditingPage(user) {
     function writeUserData() {
         try {
             addDoc(collection(database, user.user), {
-                dateTask: dateTask,
+                dateTask: `${new Date(dateTask)}`,
                 nameTask: nameTask,
                 textTask: textTask,
                 statusTask: false
@@ -62,7 +69,9 @@ export default function CreatingEditingPage(user) {
         const cityRef = doc(database, user.user, idTask);
         updateDoc(cityRef, { statusTask: !thisTask.statusTask });
         setFlagRequest(!flagRequest);
-        !thisTask.statusTask ? notifySuccess('This task done') : notifySuccess('This task doesn`t done');
+        !thisTask.statusTask ? 
+            notifySuccess('This task done') : 
+            notifySuccess('This task doesn`t done');
     }
 
     function delDoc () {
@@ -97,7 +106,7 @@ export default function CreatingEditingPage(user) {
             <button className="button_back" type="button" onClick={back}>
                 &#8617; Back Tassker
             </button>
-            {idPar === 'add' || idPar === 'adit' ? (
+            {idPar === 'add' || idPar === 'edit' ? (
                 <div className="container">
                     <div className='form_new-task'>
                         <FormInput label="Date" value={dateTask} type="date" handleChange={handleDate} />
@@ -111,22 +120,25 @@ export default function CreatingEditingPage(user) {
             ) : (
                 thisTask ? (
                     <div className="container">
-                        <p>{thisTask.dateTask}</p>
+                        <p>{new Date(thisTask.dateTask).toLocaleDateString()}</p>
                         <div>
-                            <input className="checkbox-label" id={id} type="checkbox" checked={thisTask ? thisTask.statusTask : false} readOnly />
+                            <input className="checkbox-label" id={id} type="checkbox" checked={thisTask.statusTask} readOnly />
                             <label htmlFor={id}></label>
-                            <span className="item-name">{thisTask ? thisTask.nameTask : ''}</span>
+                            <span className="item-name">{thisTask.nameTask}</span>
                         </div>
                         <p>
-                            {thisTask ? thisTask.textTask : ''}
+                            {thisTask.textTask}
                         </p>
-                        <button className='button_done' onClick={done}>{thisTask.statusTask ? (<span>&#10008;</span>) : (<span>&#10004;</span>)}</button>
-                        <button className="button_edit" onClick={() => {
-                            setDateTask(thisTask.dateTask);
-                            setNameTask(thisTask.nameTask);
-                            setTextTask(thisTask.textTask);
-                            setIdPar('adit');
-                        }}>Edit</button>
+                        <button 
+                            className='button_done' 
+                            onClick={done}
+                        >{
+                                thisTask.statusTask ? 
+                                    (<span>&#10008;</span>) : 
+                                    (<span>&#10004;</span>)
+                            }
+                        </button>
+                        <button className="button_edit" onClick={changeDataTask}>Edit</button>
                         <button className='button_delete' onClick={delDoc}>&#128465;</button>
                     </div>
                 ) : ""
