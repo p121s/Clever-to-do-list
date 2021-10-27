@@ -40,7 +40,7 @@ export default function Calendar ({allTasks}) {
             doneTasks: false
         };
         allTasks.forEach(task => {
-            if(JSON.stringify(task.dateTask.split('-').map(item => +item)) === JSON.stringify([year, month + 1, day])) {
+            if(new Date(task.dateTask).getTime() === new Date(year, month, day, 3, 0, 0, 0).getTime()) {
                 task.statusTask ? isTasksDoneOrNot.doneTasks = true : isTasksDoneOrNot.doesntDoneTasks = true;
             }
         });
@@ -82,7 +82,7 @@ export default function Calendar ({allTasks}) {
 
     useEffect(() => {
         setTasksAtThisDay(allTasks.filter(task => {
-            if(JSON.stringify(task.dateTask.split('-').map(item => +item)) === JSON.stringify([today.getFullYear(), today.getMonth() + 1, today.getDate()])) {
+            if(new Date(task.dateTask).getTime() === new Date(today.getFullYear(), today.getMonth(), today.getDate(), 0, 3, 0, 0).getTime()) {
                 return task;
             }
         }));
@@ -90,7 +90,7 @@ export default function Calendar ({allTasks}) {
 
     useEffect(() => {
         setTasksAtThisDay(allTasks.filter(task => {
-            if(JSON.stringify(task.dateTask.split('-').map(item => +item)) === JSON.stringify([chooseDate.getFullYear(), chooseDate.getMonth() + 1, chooseDate.getDate()])) {
+            if(new Date(task.dateTask).getTime() === new Date(chooseDate.getFullYear(), chooseDate.getMonth(), chooseDate.getDate(), 3, 0, 0, 0).getTime()) {
                 return task;
             }
         }));
@@ -107,7 +107,7 @@ export default function Calendar ({allTasks}) {
     }
     
     const handleDate = (e) => {
-        setChooseDate(new Date(e.currentTarget.getAttribute('value')));
+        setChooseDate(new Date(e.currentTarget.value));
         changeClassChooseDay(e.currentTarget);
     };
 

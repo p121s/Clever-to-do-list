@@ -5,6 +5,7 @@
     margin: 0 20px;
     border: 1px solid #d3d3d3;
     border-radius: 15px;
+    background-color: white;
 }
 
 .today {
@@ -20,8 +21,8 @@
 }
 
 .chooseDay {
-    flex-basis: 76px;
-    height: 96px;
+    flex-basis: 80px;
+    height: 100px;
     border: 3px solid rgb(137, 209, 233);
 }
 
@@ -69,13 +70,11 @@
 }
 
 .doesnt_done_tasks {
-    left: 25px;
     border-color: orange;
     background-color: orange;
 }
 
 .done_tasks {
-    right: -25px;
     border-color: tomato;
     background-color: tomato;
 }
