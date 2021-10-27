@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import FormInput from '../FormInput/FormInput';
 import { auth } from '../fireBase/FireBasenItialization';
 import { signInWithEmailAndPassword } from '@firebase/auth';
-import {notifyError} from '../../App';
+import {notifyError} from '../modalMessages/modalMessages';
 import 'react-toastify/dist/ReactToastify.css';
 import './LogInPage.scss';
 
