@@ -39,7 +39,6 @@ export default function LogIn() {
             >
                 Sing In
             </button>
-            {/* <button type='button'>Log in whith Google</button> */}
             <NavLink to="/register">Registration</NavLink>
         </div>
     );

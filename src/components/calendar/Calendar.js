@@ -51,16 +51,13 @@ export default function Calendar ({allTasks}) {
         let day = today.getDate();
         let month = today.getMonth();
         let year = today.getFullYear();
-        let dayName;
-        let nextDate;
         return function () {
-            nextDate = nextDateInMonth(year, month, day);
+            const nextDate = nextDateInMonth(year, month, day);
             day = nextDate.day;
             month = nextDate.month;
             year = nextDate.year;
-            dayName = daysName[new Date(year, month, day).getDay()];
             return {
-                dayName: dayName,
+                dayName: daysName[new Date(year, month, day).getDay()],
                 day: day++,
                 month: month,
                 year: year
@@ -72,9 +69,8 @@ export default function Calendar ({allTasks}) {
     
     useEffect(() => {
         let tempArr = [];
-        let tempObj = {};
         for (let i = 0; i < countDays; i++) {
-            tempObj = generDay();
+            const tempObj = generDay();
             tempArr = [...tempArr, {...tempObj, ...checkTaskDoneAndNot(tempObj.year, tempObj.month, tempObj.day)}];
         }
         setDays(tempArr);
@@ -82,17 +78,13 @@ export default function Calendar ({allTasks}) {
 
     useEffect(() => {
         setTasksAtThisDay(allTasks.filter(task => {
-            if(new Date(task.dateTask).getTime() === new Date(today.getFullYear(), today.getMonth(), today.getDate(), 0, 3, 0, 0).getTime()) {
-                return task;
-            }
+            return new Date(task.dateTask).getTime() === new Date(today.getFullYear(), today.getMonth(), today.getDate(), 3, 0, 0, 0).getTime() && task;
         }));
     }, [allTasks]);
 
     useEffect(() => {
         setTasksAtThisDay(allTasks.filter(task => {
-            if(new Date(task.dateTask).getTime() === new Date(chooseDate.getFullYear(), chooseDate.getMonth(), chooseDate.getDate(), 3, 0, 0, 0).getTime()) {
-                return task;
-            }
+            return new Date(task.dateTask).getTime() === new Date(chooseDate.getFullYear(), chooseDate.getMonth(), chooseDate.getDate(), 3, 0, 0, 0).getTime() && task;
         }));
     }, [chooseDate]);
 
@@ -120,7 +112,7 @@ export default function Calendar ({allTasks}) {
     return(
         <>
             <div className='calendar' onScroll={handleScroll}>
-                {days.length !== 0 ? days.map((day, i) => (
+                {days.length ? days.map((day, i) => (
                     <Day 
                         key={`${day.day}_${day.month}_${day.year}`} 
                         className={i === 0 ? 'today' : 'day'} 

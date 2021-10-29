@@ -12,7 +12,7 @@ export default function ModalSwitch() {
     const [status, setStatus] = useState();
 
     onAuthStateChanged(auth, user => {
-        user ? setStatus(user.uid) : setStatus(null);
+        user && setStatus(user.uid);
     });
 
     return (
