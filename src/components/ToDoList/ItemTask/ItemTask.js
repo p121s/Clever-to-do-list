@@ -29,7 +29,7 @@ export default function ItemTask ({task}) {
                 htmlFor={`check_${nameTask}`}
             ></label>
             <span
-                key={`span_${nameTask}`}
+                key={`span_${idTask}`}
                 className="item_name"
             >
                 {nameTask}
