@@ -20,14 +20,14 @@ export default function ModalSwitch() {
             <Switch>
                 {!status ? (
                     <>
-                        <Route component={LogIn}>
+                        <Route children={LogIn}>
                             <Route path="/" exact children={<LogIn />} />
                             <Route path="/register" children={<Redistration />} />
                         </Route>
                     </>
                 ) : (
                     <>
-                        <Route component={TasksPage}>
+                        <Route children={TasksPage}>
                             <Route path="/" exact children={<TasksPage user={status} />} />
                             <Route
                                 path="/item_task:id"

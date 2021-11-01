@@ -122,7 +122,7 @@ export default function CreatingEditingPage(user) {
                     <div className="container">
                         <p>{new Date(thisTask.dateTask).toLocaleDateString()}</p>
                         <div>
-                            <input className="checkbox-label" id={id} type="checkbox" checked={thisTask.statusTask} readOnly />
+                            <input className="checkbox-label" id={id} type="checkbox" value={thisTask.statusTask} checked={thisTask.statusTask} readOnly />
                             <label htmlFor={id}></label>
                             <span className="item-name">{thisTask.nameTask}</span>
                         </div>
