@@ -87,42 +87,42 @@ Contains page components
         - ToDoList.js
         - ToDoList.scss
 
-Contains task components
+**Contains task components**
 
 -----
 
 - constants
     - Constants.js
 
-Contains constants for the application
+**Contains constants for the application**
 
 ----
 
 - fireBase
     - FireBaseInitialization.js
 
-Contains the firebase initialization file
+**Contains the firebase initialization file**
 
 -----
 
 - modalMessages
     - ModalMessages.js
 
-Contains a modal message settings file
+**Contains a modal message settings file**
 
 -----
 
 - routing
     - ModalSwitch.js
 
-Contains a route switch for the application
+**Contains a route switch for the application**
 
 -----
 
 - transliteFunction
     - Translite.js
 
-Contains a transliteration function for input components
+**Contains a transliteration function for input components**
 
 ## Learn More
 
