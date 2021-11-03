@@ -41,6 +41,89 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## Folder structure
+
+### `src`
+
+- conponents
+    - caledar
+        - day
+            - Day.js
+            - Day.scss
+        - Calendar.js
+        - Calendar.scss
+
+Contains calendar components
+
+-----
+
+- conponents
+    - formInpt
+        - FormInput.js
+        - FormInput.scss
+
+Contains an input component for data entry
+
+-----
+
+- conponents
+    - pages
+        - LogInPage.js
+        - LogInPage.scss
+        - RegistrationPage.js
+        - TasksPage.js
+        - TasksPage.scss
+
+Contains page components
+
+-----
+
+- conponents
+    - toDoList
+        - itemTask
+            - ItemTask.js
+        - CreatingEditingPage.js
+        - CreatingEditingPage.scss
+        - ToDoList.js
+        - ToDoList.scss
+
+Contains task components
+
+-----
+
+- constants
+    - Constants.js
+
+Contains constants for the application
+
+----
+
+- fireBase
+    - FireBaseInitialization.js
+
+Contains the firebase initialization file
+
+-----
+
+- modalMessages
+    - ModalMessages.js
+
+Contains a modal message settings file
+
+-----
+
+- routing
+    - ModalSwitch.js
+
+Contains a route switch for the application
+
+-----
+
+- transliteFunction
+    - Translite.js
+
+Contains a transliteration function for input components
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
