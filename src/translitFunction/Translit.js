@@ -1,4 +1,4 @@
-export function translit(word) {
+export function Translit(word) {
     let answer = '';
     const converter = {
         а: 'a', б: 'b', в: 'v', г: 'g', д: 'd',

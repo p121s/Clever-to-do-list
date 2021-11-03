@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import ModalSwitch from './components/Routing/ModalSwich/ModalSwich';
+import ModalSwitch from './routing/ModalSwich';
 import { ToastContainer } from 'react-toastify';
 import './App.scss';
 

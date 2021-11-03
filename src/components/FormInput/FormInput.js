@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { translit } from '../translitFunction/translit';
+import { Translit } from '../../translitFunction/Translit';
 import './FormInput.scss';
 
 export default function FormInput({ label, type, name, placeholder, value, handleChange }) {
@@ -9,7 +9,7 @@ export default function FormInput({ label, type, name, placeholder, value, handl
     return (
         <div className="block_input">
             <label
-                htmlFor={type === 'radio' ? `${name}_${translit(value)}` : name}
+                htmlFor={type === 'radio' ? `${name}_${Translit(value)}` : name}
                 className={type === 'radio' ? 'label_with_radio' : 'label_with_out_radio'}>
                 {label}
             </label>
@@ -18,7 +18,7 @@ export default function FormInput({ label, type, name, placeholder, value, handl
                 type={type}
                 name={name}
                 placeholder={placeholder}
-                id={type === 'radio' ? `${name}_${translit(value)}` : name}
+                id={type === 'radio' ? `${name}_${Translit(value)}` : name}
                 value={value}
                 onChange={handleChange}
             />

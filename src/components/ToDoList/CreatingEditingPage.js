@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router';
-import FormInput from '../FormInput/FormInput';
+import FormInput from '../formInput/FormInput';
 import { collection, addDoc, doc, getDoc, setDoc, updateDoc, deleteDoc } from "firebase/firestore"; 
-import { database } from '../fireBase/FireBasenItialization';
-import { notifyError, notifySuccess } from '../modalMessages/modalMessages';
+import { database } from '../../fireBase/FireBasenItialization';
+import { notifyError, notifySuccess } from '../../modalMessages/ModalMessages';
 import 'react-toastify/dist/ReactToastify.css';
 import './CreatingEditingPage.scss';
 import './ToDoList.scss';

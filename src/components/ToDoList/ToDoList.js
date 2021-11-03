@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import ItemTask from './ItemTask/ItemTask';
+import ItemTask from './itemTask/ItemTask';
 import './ToDoList.scss';
 
 export default function ToDoList({allTodayTasks, counterTask}) {

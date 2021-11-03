@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Calendar from '../calendar/Calendar';
-import { auth, database } from '../fireBase/FireBasenItialization';
+import { auth, database } from '../../fireBase/FireBasenItialization';
 import { signOut } from '@firebase/auth';
 import { collection, getDocs } from "firebase/firestore"; 
 import './TasksPage.scss';

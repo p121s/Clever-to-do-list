@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from "react";
 import Day from "./day/Day";
-import ToDoList from '../ToDoList/ToDoList';
+import ToDoList from '../toDoList/ToDoList';
 import { daysName } from "../../constsnts/Constants";
 import './Calendar.scss';
 
 export default function Calendar ({allTasks}) {
 
-    const today = new Date();
+    const [today] = useState(new Date());
     const [countDays, setCountDays] = useState(30);
     const [days, setDays] = useState([]);
     const [tasksAtThisDay, setTasksAtThisDay] = useState([]);
