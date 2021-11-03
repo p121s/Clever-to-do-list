@@ -53,7 +53,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
             - Calendar.js
             - Calendar.scss
 
-Contains calendar components
+**Contains calendar components**
 
 -----
 
@@ -62,7 +62,7 @@ Contains calendar components
             - FormInput.js
             - FormInput.scss
 
-Contains an input component for data entry
+**Contains an input component for data entry**
 
 -----
 
@@ -74,7 +74,7 @@ Contains an input component for data entry
             - TasksPage.js
             - TasksPage.scss
 
-Contains page components
+**Contains page components**
 
 -----
 
