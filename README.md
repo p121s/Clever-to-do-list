@@ -45,82 +45,82 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ### `src`
 
-- conponents
-    - caledar
-        - day
-            - Day.js
-            - Day.scss
-        - Calendar.js
-        - Calendar.scss
+    - conponents
+        - caledar
+            - day
+                - Day.js
+                - Day.scss
+            - Calendar.js
+            - Calendar.scss
 
 Contains calendar components
 
 -----
 
-- conponents
-    - formInpt
-        - FormInput.js
-        - FormInput.scss
+    - conponents
+        - formInpt
+            - FormInput.js
+            - FormInput.scss
 
 Contains an input component for data entry
 
 -----
 
-- conponents
-    - pages
-        - LogInPage.js
-        - LogInPage.scss
-        - RegistrationPage.js
-        - TasksPage.js
-        - TasksPage.scss
+    - conponents
+        - pages
+            - LogInPage.js
+            - LogInPage.scss
+            - RegistrationPage.js
+            - TasksPage.js
+            - TasksPage.scss
 
 Contains page components
 
 -----
 
-- conponents
-    - toDoList
-        - itemTask
-            - ItemTask.js
-        - CreatingEditingPage.js
-        - CreatingEditingPage.scss
-        - ToDoList.js
-        - ToDoList.scss
+    - conponents
+        - toDoList
+            - itemTask
+                - ItemTask.js
+            - CreatingEditingPage.js
+            - CreatingEditingPage.scss
+            - ToDoList.js
+            - ToDoList.scss
 
 **Contains task components**
 
 -----
 
-- constants
-    - Constants.js
+    - constants
+        - Constants.js
 
 **Contains constants for the application**
 
 ----
 
-- fireBase
-    - FireBaseInitialization.js
+    - fireBase
+        - FireBaseInitialization.js
 
 **Contains the firebase initialization file**
 
 -----
 
-- modalMessages
-    - ModalMessages.js
+    - modalMessages
+        - ModalMessages.js
 
 **Contains a modal message settings file**
 
 -----
 
-- routing
-    - ModalSwitch.js
+    - routing
+        - ModalSwitch.js
 
 **Contains a route switch for the application**
 
 -----
 
-- transliteFunction
-    - Translite.js
+    - transliteFunction
+        - Translite.js
 
 **Contains a transliteration function for input components**
 
