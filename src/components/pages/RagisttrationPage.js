@@ -21,20 +21,20 @@ export default function Redistration() {
         setPassword(value);
     };
 
-    const handleReapeatPassword = ({target: {value}}) => {
+    const handleReapeatPassword = ({ target: { value } }) => {
         setRepeatPassword(value);
     };
 
     const createAccount = () => {
-        if(password === repeatPassword) {
+        if (password === repeatPassword) {
             createUserWithEmailAndPassword(auth, email, password)
                 .then(responce => responce.user.uid)
                 .then(responce => {
-                    if(responce) {
+                    if (responce) {
                         history.push('/');
                     }
                     return responce;
-                })                    
+                })
                 .catch(err => notifyError(err));
         } else {
             notifyError("Passwords don't match");
@@ -42,12 +42,24 @@ export default function Redistration() {
     };
 
     return (
-        <div className='login_container'>
+        <div className="login_container">
             <h2>Registration</h2>
             <FormInput label="Your Email" value={email} type="email" handleChange={handleEmail} />
-            <FormInput label="Password" value={password} type="password" handleChange={handlePassword} />
-            <FormInput label="Repeat password" value={repeatPassword} type="password" handleChange={handleReapeatPassword} />
-            <button className='login-reg' onClick={createAccount}>Register</button>
+            <FormInput
+                label="Password"
+                value={password}
+                type="password"
+                handleChange={handlePassword}
+            />
+            <FormInput
+                label="Repeat password"
+                value={repeatPassword}
+                type="password"
+                handleChange={handleReapeatPassword}
+            />
+            <button className="login-reg" onClick={createAccount}>
+                Register
+            </button>
             <NavLink to="/">Log In</NavLink>
         </div>
     );

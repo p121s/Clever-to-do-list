@@ -1,16 +1,15 @@
 /* eslint-disable react/prop-types */
-import React from "react";
-import { useHistory } from "react-router";
+import React from 'react';
+import { useHistory } from 'react-router';
 
-export default function ItemTask ({task}) {
-
+export default function ItemTask({ task }) {
     const history = useHistory();
 
-    const {nameTask, idTask, statusTask} = task;
+    const { nameTask, idTask, statusTask } = task;
 
     return (
-        <div 
-            className='task_li' 
+        <div
+            className="task_li"
             key={`div_${idTask}`}
             onClick={() => {
                 history.push(`/item_task${idTask}`);
@@ -24,15 +23,10 @@ export default function ItemTask ({task}) {
                 checked={statusTask}
                 readOnly
             />
-            <label
-                key={`label_${idTask}`}
-                htmlFor={`check_${nameTask}`}
-            ></label>
-            <span
-                key={`span_${idTask}`}
-                className="item_name"
-            >
+            <label key={`label_${idTask}`} htmlFor={`check_${nameTask}`}></label>
+            <span key={`span_${idTask}`} className="item_name">
                 {nameTask}
             </span>
-        </div>);
+        </div>
+    );
 }

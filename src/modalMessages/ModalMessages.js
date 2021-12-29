@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify';
 
 const notifySetting = {
-    position: "top-right",
+    position: 'top-right',
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
@@ -10,5 +10,5 @@ const notifySetting = {
     progress: undefined,
 };
 
-export const notifySuccess = (message) => toast.success(`${message}`, notifySetting);
-export const notifyError = (error) => toast.error(`${error}`, notifySetting);
+export const notifySuccess = message => toast.success(`${message}`, notifySetting);
+export const notifyError = error => toast.error(`${error}`, notifySetting);

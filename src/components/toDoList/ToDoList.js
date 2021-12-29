@@ -4,8 +4,7 @@ import { useHistory } from 'react-router-dom';
 import ItemTask from './itemTask/ItemTask';
 import './ToDoList.scss';
 
-export default function ToDoList({allTodayTasks, counterTask}) {
-    
+export default function ToDoList({ allTodayTasks, counterTask }) {
     const history = useHistory();
 
     const goToThePage = () => {
@@ -17,22 +16,14 @@ export default function ToDoList({allTodayTasks, counterTask}) {
             <div>
                 <h2>{counterTask} Today Tasks</h2>
             </div>
-            <div className='container_tasks'>
+            <div className="container_tasks">
                 {!allTodayTasks.length
                     ? 'You don`t have tasks today!'
-                    : allTodayTasks.map(task =>
-                    {
-                        return (
-                            <ItemTask key={`item_${task.idTask}`} task={task} />
-                        );
-                    }
-                    )
-                }
+                    : allTodayTasks.map(task => {
+                        return <ItemTask key={`item_${task.idTask}`} task={task} />;
+                    })}
             </div>
-            <button
-                id="add_task"
-                onClick={goToThePage}
-            >
+            <button id="add_task" onClick={goToThePage}>
                 + Add Task
             </button>
         </div>

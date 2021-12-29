@@ -1,12 +1,11 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect } from "react";
-import Day from "./day/Day";
+import React, { useState, useEffect } from 'react';
+import Day from './day/Day';
 import ToDoList from '../toDoList/ToDoList';
-import { daysName } from "../../constsnts/Constants";
+import { daysName } from '../../constsnts/Constants';
 import './Calendar.scss';
 
-export default function Calendar ({allTasks}) {
-
+export default function Calendar({ allTasks }) {
     const [today] = useState(new Date());
     const [countDays, setCountDays] = useState(30);
     const [days, setDays] = useState([]);
@@ -19,29 +18,34 @@ export default function Calendar ({allTasks}) {
     };
 
     const nextDateInMonth = (year, month, day) => {
-        if(day === daysInMonth(month, year) + 1) {
+        if (day === daysInMonth(month, year) + 1) {
             day = 1;
             month += 1;
         }
-        if(month === 12) {
+        if (month === 12) {
             month = 0;
             year += 1;
         }
         return {
             day: day,
             month: month,
-            year: year
+            year: year,
         };
     };
 
     const checkTaskDoneAndNot = (year, month, day) => {
         const isTasksDoneOrNot = {
             doesntDoneTasks: false,
-            doneTasks: false
+            doneTasks: false,
         };
         allTasks.forEach(task => {
-            if(new Date(task.dateTask).getTime() === new Date(year, month, day, 3, 0, 0, 0).getTime()) {
-                task.statusTask ? isTasksDoneOrNot.doneTasks = true : isTasksDoneOrNot.doesntDoneTasks = true;
+            if (
+                new Date(task.dateTask).getTime() ===
+                new Date(year, month, day, 3, 0, 0, 0).getTime()
+            ) {
+                task.statusTask
+                    ? (isTasksDoneOrNot.doneTasks = true)
+                    : (isTasksDoneOrNot.doesntDoneTasks = true);
             }
         });
         return isTasksDoneOrNot;
@@ -60,68 +64,102 @@ export default function Calendar ({allTasks}) {
                 dayName: daysName[new Date(year, month, day).getDay()],
                 day: day++,
                 month: month,
-                year: year
+                year: year,
             };
         };
     };
 
     const generDay = readyDay();
-    
+
     useEffect(() => {
         let tempArr = [];
         for (let i = 0; i < countDays; i++) {
             const tempObj = generDay();
-            tempArr = [...tempArr, {...tempObj, ...checkTaskDoneAndNot(tempObj.year, tempObj.month, tempObj.day)}];
+            tempArr = [
+                ...tempArr,
+                { ...tempObj, ...checkTaskDoneAndNot(tempObj.year, tempObj.month, tempObj.day) },
+            ];
         }
         setDays(tempArr);
     }, [allTasks, countDays]);
 
     useEffect(() => {
-        setTasksAtThisDay(allTasks.filter(task => {
-            return new Date(task.dateTask).getTime() === new Date(today.getFullYear(), today.getMonth(), today.getDate(), 3, 0, 0, 0).getTime() && task;
-        }));
+        setTasksAtThisDay(
+            allTasks.filter(task => {
+                return (
+                    new Date(task.dateTask).getTime() ===
+                        new Date(
+                            today.getFullYear(),
+                            today.getMonth(),
+                            today.getDate(),
+                            3,
+                            0,
+                            0,
+                            0,
+                        ).getTime() && task
+                );
+            }),
+        );
     }, [allTasks]);
 
     useEffect(() => {
-        setTasksAtThisDay(allTasks.filter(task => {
-            return new Date(task.dateTask).getTime() === new Date(chooseDate.getFullYear(), chooseDate.getMonth(), chooseDate.getDate(), 3, 0, 0, 0).getTime() && task;
-        }));
+        setTasksAtThisDay(
+            allTasks.filter(task => {
+                return (
+                    new Date(task.dateTask).getTime() ===
+                        new Date(
+                            chooseDate.getFullYear(),
+                            chooseDate.getMonth(),
+                            chooseDate.getDate(),
+                            3,
+                            0,
+                            0,
+                            0,
+                        ).getTime() && task
+                );
+            }),
+        );
     }, [chooseDate]);
 
     useEffect(() => {
         settasksAtThisDayLenght(tasksAtThisDay.length);
     }, [tasksAtThisDay]);
 
-    function changeClassChooseDay (elem) {
-        const daysCollection = document.getElementsByClassName("day");
-        [...daysCollection].forEach(elem => elem.classList.remove("chooseDay"));
-        elem.classList.add("chooseDay");
+    function changeClassChooseDay(elem) {
+        const daysCollection = document.getElementsByClassName('day');
+        [...daysCollection].forEach(elem => elem.classList.remove('chooseDay'));
+        elem.classList.add('chooseDay');
     }
-    
-    const handleDate = (e) => {
+
+    const handleDate = e => {
         setChooseDate(new Date(e.currentTarget.value));
         changeClassChooseDay(e.currentTarget);
     };
 
-    const handleScroll = (e) => {
-        if(Math.ceil(e.target.scrollLeft + e.target.clientWidth) === e.target.scrollWidth) {
+    const handleScroll = e => {
+        if (Math.ceil(e.target.scrollLeft + e.target.clientWidth) === e.target.scrollWidth) {
             setCountDays(countDays + 30);
         }
     };
 
-    return(
+    return (
         <>
-            <div className='calendar' onScroll={handleScroll}>
-                {days.length ? days.map((day, i) => (
-                    <Day 
-                        key={`${day.day}_${day.month}_${day.year}`} 
-                        className={i === 0 ? 'today' : 'day'} 
-                        day={day.dayName} date={day.day} 
-                        month={day.month} year={day.year} 
-                        doesntDoneTasks={day.doesntDoneTasks} 
-                        doneTasks={day.doneTasks} 
-                        handleDate={handleDate} />
-                )) : ''}
+            <div className="calendar" onScroll={handleScroll}>
+                {days.length
+                    ? days.map((day, i) => (
+                        <Day
+                            key={`${day.day}_${day.month}_${day.year}`}
+                            className={i === 0 ? 'today' : 'day'}
+                            day={day.dayName}
+                            date={day.day}
+                            month={day.month}
+                            year={day.year}
+                            doesntDoneTasks={day.doesntDoneTasks}
+                            doneTasks={day.doneTasks}
+                            handleDate={handleDate}
+                        />
+                    ))
+                    : ''}
             </div>
             <ToDoList allTodayTasks={tasksAtThisDay} counterTask={tasksAtThisDayLenght} />
         </>

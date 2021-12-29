@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import FormInput from '../formInput/FormInput';
 import { auth } from '../../fireBase/FireBasenItialization';
 import { signInWithEmailAndPassword } from '@firebase/auth';
-import {notifyError} from '../../modalMessages/ModalMessages';
+import { notifyError } from '../../modalMessages/ModalMessages';
 import 'react-toastify/dist/ReactToastify.css';
 import './LogInPage.scss';
 
@@ -31,8 +31,14 @@ export default function LogIn() {
         <div className="login_container">
             <h2>Log In</h2>
             <FormInput label="Your Email" value={email} type="email" handleChange={handleEmail} />
-            <FormInput label="Password" value={password} type="password" handleChange={handlePassword} />
-            <button className='login-reg'
+            <FormInput
+                label="Password"
+                value={password}
+                type="password"
+                handleChange={handlePassword}
+            />
+            <button
+                className="login-reg"
                 onClick={() => {
                     logIn(auth, email, password);
                 }}
