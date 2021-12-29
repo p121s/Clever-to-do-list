@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { Translit } from '../../translitFunction/Translit';
+import { Translit } from '../../translitFunction/translit';
 import './FormInput.scss';
 
 export default function FormInput({ label, type, name, placeholder, value, handleChange }) {

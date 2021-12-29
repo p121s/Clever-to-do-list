@@ -1,12 +1,12 @@
 /* eslint-disable react/no-children-prop */
-import LogIn from '../components/pages/LogInPage';
-import CreatingEditingPage from '../components/toDoList/CreatingEditingPage';
-import Redistration from '../components/pages/RagisttrationPage';
+import LogIn from '../components/pages/LoginPage/LogInPage';
+import CreatingEditingPage from '../components/pages/CreatingEditingPage/CreatingEditingPage';
+import Redistration from '../components/pages/RegistrationPage/RagisttrationPage';
 import { Switch, Route } from 'react-router-dom';
 import React, { useState } from 'react';
 import { onAuthStateChanged } from '@firebase/auth';
-import { auth } from '../fireBase/FireBasenItialization';
-import TasksPage from '../components/pages/TasksPage';
+import { auth } from '../fireBase/fireBasenItialization';
+import TasksPage from '../components/pages/TasksPage/TasksPage';
 
 export default function ModalSwitch() {
     const [status, setStatus] = useState();

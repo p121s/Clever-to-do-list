@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Day from './day/Day';
 import ToDoList from '../toDoList/ToDoList';
-import { daysName } from '../../constsnts/Constants';
+import { daysName } from '../../constsnts/constants';
 import './Calendar.scss';
 
 export default function Calendar({ allTasks }) {

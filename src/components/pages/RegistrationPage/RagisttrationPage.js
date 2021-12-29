@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
-import { auth } from '../../fireBase/FireBasenItialization';
+import { auth } from '../../../fireBase/fireBasenItialization';
 import { createUserWithEmailAndPassword } from '@firebase/auth';
-import FormInput from '../formInput/FormInput';
-import { notifyError } from '../../modalMessages/ModalMessages';
+import FormInput from '../../formInput/FormInput';
+import { notifyError } from '../../../modalMessages/modalMessages';
 import 'react-toastify/dist/ReactToastify.css';
-import './LogInPage.scss';
+import '../LoginPage/LogInPage.scss';
 
 export default function Redistration() {
     const [email, setEmail] = useState();
