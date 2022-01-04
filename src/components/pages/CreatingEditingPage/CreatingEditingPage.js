@@ -50,7 +50,7 @@ export default function CreatingEditingPage(user) {
             .then(responce => setThisTask(responce));
     }, [flagRequest]);
 
-    function writeUserData() {
+    const writeUserData = () => {
         try {
             addDoc(collection(database, user.user), {
                 dateTask: `${new Date(dateTask)}`,
@@ -63,25 +63,25 @@ export default function CreatingEditingPage(user) {
         } catch (e) {
             notifyError('Error adding document');
         }
-    }
+    };
 
-    function done() {
+    const done = () => {
         const cityRef = doc(database, user.user, idTask);
         updateDoc(cityRef, { statusTask: !thisTask.statusTask });
         setFlagRequest(!flagRequest);
         !thisTask.statusTask
             ? notifySuccess('This task done')
             : notifySuccess('This task doesn`t done');
-    }
+    };
 
-    function delDoc() {
+    const delDoc = () => {
         const cityRef = doc(database, user.user, idTask);
         deleteDoc(cityRef);
         setFlagRequest(!flagRequest);
         notifySuccess('Task deleted!');
-    }
+    };
 
-    function changeTask() {
+    const changeTask = () => {
         try {
             setDoc(doc(database, user.user, idTask), {
                 dateTask: dateTask,
@@ -99,7 +99,7 @@ export default function CreatingEditingPage(user) {
         } catch (e) {
             notifyError('Error adding document');
         }
-    }
+    };
 
     return (
         <div className="task_page-container">

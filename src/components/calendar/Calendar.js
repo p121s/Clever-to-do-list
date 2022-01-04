@@ -38,7 +38,7 @@ export default function Calendar({ allTasks }) {
             doesntDoneTasks: false,
             doneTasks: false,
         };
-        allTasks.forEach(task => {
+        allTasks.forEach((task) => {
             if (
                 new Date(task.dateTask).getTime() ===
                 new Date(year, month, day, 3, 0, 0, 0).getTime()
@@ -84,59 +84,46 @@ export default function Calendar({ allTasks }) {
     }, [allTasks, countDays]);
 
     useEffect(() => {
-        setTasksAtThisDay(
-            allTasks.filter(task => {
-                return (
-                    new Date(task.dateTask).getTime() ===
-                        new Date(
-                            today.getFullYear(),
-                            today.getMonth(),
-                            today.getDate(),
-                            3,
-                            0,
-                            0,
-                            0,
-                        ).getTime() && task
-                );
-            }),
-        );
+        setTasksAtThisDay(getTasksAtThisDay(today));
     }, [allTasks]);
 
     useEffect(() => {
-        setTasksAtThisDay(
-            allTasks.filter(task => {
-                return (
-                    new Date(task.dateTask).getTime() ===
-                        new Date(
-                            chooseDate.getFullYear(),
-                            chooseDate.getMonth(),
-                            chooseDate.getDate(),
-                            3,
-                            0,
-                            0,
-                            0,
-                        ).getTime() && task
-                );
-            }),
-        );
+        setTasksAtThisDay(getTasksAtThisDay(chooseDate));
     }, [chooseDate]);
 
     useEffect(() => {
         settasksAtThisDayLenght(tasksAtThisDay.length);
     }, [tasksAtThisDay]);
 
-    function changeClassChooseDay(elem) {
-        const daysCollection = document.getElementsByClassName('day');
-        [...daysCollection].forEach(elem => elem.classList.remove('chooseDay'));
-        elem.classList.add('chooseDay');
-    }
+    const getTasksAtThisDay = (date) => {
+        return allTasks.filter((task) => {
+            return (
+                new Date(task.dateTask).getTime() ===
+                    new Date(
+                        date.getFullYear(),
+                        date.getMonth(),
+                        date.getDate(),
+                        3,
+                        0,
+                        0,
+                        0,
+                    ).getTime() && task
+            );
+        });
+    };
 
-    const handleDate = e => {
+    const changeClassChooseDay = (elem) => {
+        const daysCollection = document.getElementsByClassName('day');
+        [...daysCollection].forEach((elem) => elem.classList.remove('chooseDay'));
+        elem.classList.add('chooseDay');
+    };
+
+    const handleDate = (e) => {
         setChooseDate(new Date(e.currentTarget.value));
         changeClassChooseDay(e.currentTarget);
     };
 
-    const handleScroll = e => {
+    const handleScroll = (e) => {
         if (Math.ceil(e.target.scrollLeft + e.target.clientWidth) === e.target.scrollWidth) {
             setCountDays(countDays + 30);
         }

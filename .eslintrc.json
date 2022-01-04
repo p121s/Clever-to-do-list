@@ -16,7 +16,6 @@
         "space-in-parens": "warn",
         "no-multiple-empty-lines": "warn",
         "prefer-const": "warn",
-        "no-use-before-define": "warn",
         "react/prop-types": "warn",
         "no-unused-vars": "off"
     }
